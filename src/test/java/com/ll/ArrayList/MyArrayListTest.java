@@ -36,10 +36,9 @@ class MyArrayListTest {
         list.add("Baby");
         list.add("Lion");
 
+
+        assertThat(list.get(0)).isEqualTo("Baby");
         assertThat(list.get(1)).isEqualTo("Lion");
-
-
-
     }
 
 

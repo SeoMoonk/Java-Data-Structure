@@ -2,6 +2,9 @@ package com.ll.ArrayList;
 
 public class MyArrayList<T> {
 
+//    private T[] data = (T[])new String[2];
+    private String[] data = new String[2];
+
     private int size = 0;
 
     public int size() {
@@ -12,14 +15,15 @@ public class MyArrayList<T> {
 
     public boolean add(T element) {
 
+        data[size] = (String)element;
         size++;
 
         return true;
     }
 
 
-    public T get(int index) {
+    public String get(int index) {
 
-        return (T)"Lion";
+        return (String) data[index];
     }
 }
