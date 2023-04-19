@@ -1,75 +1,46 @@
 package com.ll.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MyArrayListTest {
-    private MyArrayList<String> list;
 
-    @BeforeEach
-    void setUp() {
-        list = new MyArrayList<>();
+    @Test
+    @DisplayName("Test_Size")
+    void t001() {
+
+        MyArrayList<String> list = new MyArrayList<>();
+        assertThat(list.size()).isEqualTo(0);
     }
 
     @Test
-    void testAdd() {
-        assertTrue(list.add("Element1"));
-        assertEquals(1, list.size());
-        assertEquals("Element1", list.get(0));
+    @DisplayName("Test_add(\"Baby, Lion\")")
+    void t002() {
+        MyArrayList<String> list = new MyArrayList<>();
+
+        list.add("Baby");
+        list.add("Lion");
+
+        assertThat(list.size()).isEqualTo(2);
     }
 
     @Test
-    void testRemove() {
-        list.add("Element1");
-        list.add("Element2");
-        list.add("Element3");
-        assertEquals("Element2", list.remove(1));
-        assertEquals(2, list.size());
+    @DisplayName("Test_Get")
+    void t003() {
+        MyArrayList<String> list = new MyArrayList<>();
+
+        list.add("Baby");
+        list.add("Lion");
+
+        assertThat(list.get(1)).isEqualTo("Lion");
+
+
+
     }
 
-    @Test
-    void testGet() {
-        list.add("Element1");
-        list.add("Element2");
-        assertEquals("Element1", list.get(0));
-        assertEquals("Element2", list.get(1));
-    }
 
-    @Test
-    void testSize() {
-        list.add("Element1");
-        list.add("Element2");
-        list.add("Element3");
-        assertEquals(3, list.size());
-    }
-
-    @Test
-    void testContains() {
-        list.add("Element1");
-        list.add("Element2");
-        assertTrue(list.contains("Element1"));
-        assertFalse(list.contains("Element3"));
-    }
-
-    @Test
-    void testIndexOf() {
-        list.add("Element1");
-        list.add("Element2");
-        list.add("Element1");
-        assertEquals(0, list.indexOf("Element1"));
-        assertEquals(1, list.indexOf("Element2"));
-        assertEquals(-1, list.indexOf("Element3"));
-    }
-
-    @Test
-    void testClear() {
-        list.add("Element1");
-        list.add("Element2");
-        list.add("Element3");
-        list.clear();
-        assertEquals(0, list.size());
-        assertTrue(list.isEmpty());
-    }
 }

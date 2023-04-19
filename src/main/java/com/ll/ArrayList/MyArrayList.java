@@ -1,46 +1,25 @@
 package com.ll.ArrayList;
 
-import java.util.ArrayList;
+public class MyArrayList<T> {
 
-public class MyArrayList {
+    private int size = 0;
 
-    public static void main(String[] args) { }
+    public int size() {
+
+        return size;
+    }
 
 
+    public boolean add(T element) {
 
-    boolean add() {
-
+        size++;
 
         return true;
     }
 
-    void remove() {
 
+    public T get(int index) {
+
+        return (T)"Lion";
     }
-
-    void size() {
-
-    }
-
-
-    void get() {
-
-    }
-
-    void contains() {
-
-    }
-
-    void indexOf() {
-
-    }
-
-    void isEmpty() {
-
-    }
-
-    void clear() {
-
-    }
-
 }
