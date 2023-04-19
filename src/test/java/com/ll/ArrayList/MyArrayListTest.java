@@ -35,10 +35,14 @@ class MyArrayListTest {
 
         list.add("Baby");
         list.add("Lion");
-
+        list.add("ArrayList");
+        list.add("Generic");
 
         assertThat(list.get(0)).isEqualTo("Baby");
         assertThat(list.get(1)).isEqualTo("Lion");
+        assertThat(list.get(2)).isEqualTo("ArrayList");
+        assertThat(list.get(3)).isEqualTo("Generic");
+
     }
 
 
