@@ -12,7 +12,6 @@ public class MyArrayList<T> {
         return size;
     }
 
-
     public boolean add(T element) {
 
         size++;
@@ -49,8 +48,8 @@ public class MyArrayList<T> {
     }
 
     private boolean ifNotEnough() {
-
-        return size >= data.length;
+        
+        return size > data.length;
     }
 
 

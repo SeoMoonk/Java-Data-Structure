@@ -1,6 +1,6 @@
 package com.ll.ArrayList;
 
-import org.junit.jupiter.api.BeforeEach;
+import com.ll.TestUt.TestUt;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -42,8 +42,31 @@ class MyArrayListTest {
         assertThat(list.get(1)).isEqualTo("Lion");
         assertThat(list.get(2)).isEqualTo("ArrayList");
         assertThat(list.get(3)).isEqualTo("Generic");
-
     }
+
+    @Test
+    @DisplayName("Test_Array Dynamically")
+    void t004() {
+
+        MyArrayList<String> list = new MyArrayList<>();
+
+        String[] data = TestUt.getFieldValue(list, "data", null);
+        assertThat(data.length).isEqualTo(2);
+
+        list.add("사과");
+        list.add("포도");
+
+        data = TestUt.getFieldValue(list, "data", null);
+        assertThat(data.length).isEqualTo(2);
+
+        list.add("당근");
+
+        data = TestUt.getFieldValue(list, "data", null);
+        assertThat(data.length).isEqualTo(3);
+
+        assertThat(list.size()).isEqualTo(3);
+    }
+
 
 
 }
