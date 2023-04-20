@@ -1,6 +1,7 @@
 package com.ll.ArrayList;
 
 import java.util.ArrayList;
+import java.util.stream.IntStream;
 
 public class MyArrayList<T> {
 
@@ -8,6 +9,14 @@ public class MyArrayList<T> {
     private String[] data;
 
     private int size = 0;
+
+    public MyArrayList() {
+        this(2);
+    }
+
+    public MyArrayList(int dataLength) {
+        data = new String[dataLength];
+    }
 
     public int size() {
 
@@ -64,13 +73,29 @@ public class MyArrayList<T> {
         return (String) data[index];
     }
 
-    public MyArrayList() {
-        this(2);
+    public int indexOf(String element) {
+
+        for(int i=0; i<data.length; i++)
+        {
+            if(element.equals(data[i]))
+            {
+                return i;
+            }
+        }
+
+//        return IntStream.range(0, size)
+//                .mapToObj(index -> new Object[]{index, data[index]})
+//                .filter(arr -> element.equals(arr[1]))
+//                .mapToInt(arr -> (int)arr[0])
+//                .findFirst()
+//                .orElse(-1);
+
+        return -1;
+
+
+
     }
 
-    public MyArrayList(int dataLength) {
-        data = new String[dataLength];
-    }
 
     public String remove(int index) {
 
@@ -103,7 +128,6 @@ public class MyArrayList<T> {
             size--;
             return removeData;
         }
-
     }
 
 }

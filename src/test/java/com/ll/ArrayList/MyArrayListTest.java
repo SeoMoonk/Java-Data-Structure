@@ -100,4 +100,17 @@ class MyArrayListTest {
                 .forEach(index -> list.add("사과 %d".formatted(index)));
     }
 
+    @Test
+    @DisplayName("Test_Remove")
+    void t008() {
+
+        MyArrayList<String> list = new MyArrayList<>();
+        list.add("Baby");
+        list.add("Lion");
+        list.add("ArrayList");
+
+        assertEquals("Lion", list.remove(1));
+        assertEquals(2, list.size());
+    }
+
 }
