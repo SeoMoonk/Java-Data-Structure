@@ -101,16 +101,31 @@ class MyArrayListTest {
     }
 
     @Test
-    @DisplayName("Test_Remove")
+    @DisplayName("indexOf")
     void t008() {
+        MyArrayList<String> list = new MyArrayList<>(100);
 
-        MyArrayList<String> list = new MyArrayList<>();
-        list.add("Baby");
-        list.add("Lion");
-        list.add("ArrayList");
+        IntStream.range(0, 100)
+                .forEach(index -> list.add("사과 %d".formatted(index)));
 
-        assertEquals("Lion", list.remove(1));
-        assertEquals(2, list.size());
+        assertThat(list.indexOf("사과 0")).isEqualTo(0);
+        assertThat(list.indexOf("사과 1")).isEqualTo(1);
+        assertThat(list.indexOf("사과 5")).isEqualTo(5);
+        assertThat(list.indexOf("사과 99")).isEqualTo(99);
+        assertThat(list.indexOf("사과 100")).isEqualTo(-1);
     }
+
+//    @Test
+//    @DisplayName("Test_Remove")
+//    void t008() {
+//
+//        MyArrayList<String> list = new MyArrayList<>();
+//        list.add("Baby");
+//        list.add("Lion");
+//        list.add("ArrayList");
+//
+//        assertEquals("Lion", list.remove(1));
+//        assertEquals(2, list.size());
+//    }
 
 }
