@@ -118,9 +118,9 @@ public class MyArrayList<T> {
     }
 
 
-    public String remove(int index) {
+    public T remove(int index) {
 
-        String removeData = (String) data[index];
+        T removeData = (T) data[index];
 
         if (index == size - 1) {
             //맨 뒤의 것이 삭제된다면, 그자리만 비워주면 된다.
@@ -163,6 +163,15 @@ public class MyArrayList<T> {
             return true;
         }
         return false;
+    }
+
+    public T set(int index, T element) {
+
+        T old = (T) data[index];
+
+        data[index] = element;
+
+        return old;
     }
 
 }
