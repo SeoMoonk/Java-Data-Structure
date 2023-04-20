@@ -38,6 +38,28 @@ public class MyArrayList<T> {
         return true;
     }
 
+    public boolean add(int index, T element) {
+
+        size++;
+
+        makeNewDataIfNotEnough();
+
+        makeEmptyIndex(index);
+
+        data[index] = element;
+
+        return true;
+    }
+
+    private void makeEmptyIndex(int index)
+    {
+
+        for(int i = size; i>= index; i--)
+        {
+            data[i+1] = data[i];
+        }
+    }
+
     private void makeNewDataIfNotEnough() {
 
         if (ifNotEnough()) {
@@ -96,37 +118,51 @@ public class MyArrayList<T> {
     }
 
 
-//    public String remove(int index) {
-//
-//        System.out.println("삭제할 index = " + index);
-//        System.out.println("현재 size = " + size);
-//
-//        String removeData = data[index];
-//
-//        if (index == 0) {
-//            //맨 앞을 삭제하고, 그 뒤의걸 전부 앞으로 당겨와야 함.
-//
-//            size--;
-//            return removeData;
-//        } else if (index == size - 1) {
-//            //맨 뒤의 것을 삭제하고, 그자리만 비워주면 된다.
-//
-//            data[index] = null;
-//
-//            size--;
-//            return removeData;
-//        } else {
-//            //삭제한 곳을 비워주고, 삭제한 곳 뒤의 내용을 당겨와야 한다.
-//
-//            for (int i = index; i < size - 1; i++) {
-//                data[index] = data[index + 1];
-//            }
-//
-//            data[index] = null;
-//
-//            size--;
-//            return removeData;
-//        }
-//    }
+    public String remove(int index) {
+
+        String removeData = (String) data[index];
+
+        if (index == size - 1) {
+            //맨 뒤의 것이 삭제된다면, 그자리만 비워주면 된다.
+            data[index] = null;
+
+            size--;
+            return removeData;
+        } else {
+
+            //삭제할 곳(index)부터 그 뒤의 내용들을 당겨오고, 맨 뒤의 내용을 비워준다,
+            for (int i = index; i < size - 1; i++) {
+                data[index] = data[index + 1];
+            }
+
+            data[size-1] = null;
+
+            size--;
+            return removeData;
+        }
+    }
+
+    public boolean contains(T element) {
+
+        return indexOf(element) != -1;
+    }
+
+    public void clear() {
+
+        for(int i=0; i<size-1; i++)
+        {
+            data[i] = null;
+        }
+        size = 0;
+    }
+
+    public boolean isEmpty() {
+
+        if(this.size == 0)
+        {
+            return true;
+        }
+        return false;
+    }
 
 }

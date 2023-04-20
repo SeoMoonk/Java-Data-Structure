@@ -146,20 +146,94 @@ class MyArrayListTest {
     }
 
 
+    @Test
+    @DisplayName("Test_Remove")
+    void t011() {
+
+        MyArrayList<String> list = new MyArrayList<>(10);
+
+        list.add("Baby");
+        list.add("Lion");
+        list.add("ArrayList");
+
+        assertEquals("Lion", list.remove(1));
+
+        System.out.println("list.get(0) = " + list.get(0));
+        System.out.println("list.get(0) = " + list.get(1));
+
+        //null 이 들어오는 건 확인 했는데, 어떻게 완벽히 지워버릴 수가 있는거지?
+        System.out.println("list.get(0) = " + list.get(2));
+        System.out.println("list.get(0) = " + list.get(3));
+
+        assertEquals(2, list.size());
+    }
+
+    @Test
+    @DisplayName("Test_Contains")
+    void t012() {
+
+        MyArrayList<String> list = new MyArrayList<>(10);
+
+        list.add("Baby");
+        list.add("Lion");
+        list.add("ArrayList");
+
+        assertTrue(list.contains("Lion"));
+        assertFalse(list.contains("Blog"));
+    }
+
+    @Test
+    @DisplayName("Test_contains(\"사과 0\")")
+    void t013() {
+        MyArrayList<String> list = new MyArrayList<>(2);
+
+        IntStream.range(0, 2)
+                .forEach(index -> list.add("사과 %d".formatted(index)));
+
+        assertThat(list.contains("사과 0")).isEqualTo(true);
+        assertThat(list.contains("사과 1")).isEqualTo(true);
+        assertThat(list.contains("사과 2")).isEqualTo(false);
+    }
 
 
 
-//    @Test
-//    @DisplayName("Test_Remove")
-//    void t008() {
-//
-//        MyArrayList<String> list = new MyArrayList<>();
-//        list.add("Baby");
-//        list.add("Lion");
-//        list.add("ArrayList");
-//
-//        assertEquals("Lion", list.remove(1));
-//        assertEquals(2, list.size());
-//    }
+    @Test
+    @DisplayName("Test_Clear")
+    void t014() {
+
+        MyArrayList<String> list = new MyArrayList<>(10);
+
+        list.add("Element1");
+        list.add("Element2");
+        list.add("Element3");
+        list.clear();
+        assertEquals(0, list.size());
+        assertTrue(list.isEmpty());
+
+    }
+
+    @Test
+    @DisplayName("addAt")
+    void t015() {
+        MyArrayList<String> list = new MyArrayList<>();
+
+        list.add("Element1"); // 0번 좌석에 착석
+        list.add("Element2"); // 1번 좌석에 착석
+        list.add("Element3"); // 2번 좌석에 착석
+
+        list.add(1, "Element4");
+        // 2 => 3
+        // 1 => 2
+        // 1번 좌석에 착석
+
+        assertThat(list.size()).isEqualTo(4);
+
+        assertThat(list.get(0)).isEqualTo("Element1");
+        assertThat(list.get(1)).isEqualTo("Element4");
+        assertThat(list.get(2)).isEqualTo("Element2");
+        assertThat(list.get(3)).isEqualTo("Element3");
+    }
+
+
 
 }
