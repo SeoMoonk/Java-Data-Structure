@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 public class MyArrayList<T> {
 
     public boolean debug = false;
-    private String[] data;
+    private Object[] data;
 
     private int size = 0;
 
@@ -15,7 +15,7 @@ public class MyArrayList<T> {
     }
 
     public MyArrayList(int dataLength) {
-        data = new String[dataLength];
+        data = new Object[dataLength];
     }
 
     public int size() {
@@ -23,7 +23,7 @@ public class MyArrayList<T> {
         return size;
     }
 
-    public boolean add(T element) {
+    public boolean add(Object element) {
 
         size++;
 
@@ -46,7 +46,7 @@ public class MyArrayList<T> {
 
         //1이 늘어난 size 를 기반으로 새로운 저장소를 만듦 -> 동적임은 맞지만 호출 횟수가 과하게 많음.
         //String[] newData = new String[size];
-        String[] newData = new String[data.length * 2];
+        Object[] newData = new String[data.length * 2];
 
         //덮어쓰기 (새 창고로 옮기기)
         for (int i = 0; i < data.length; i++) {
@@ -68,12 +68,12 @@ public class MyArrayList<T> {
     }
 
 
-    public String get(int index) {
+    public Object get(int index) {
 
-        return (String) data[index];
+        return data[index];
     }
 
-    public int indexOf(String element) {
+    public int indexOf(Object element) {
 
         for(int i=0; i<data.length; i++)
         {
@@ -97,37 +97,37 @@ public class MyArrayList<T> {
     }
 
 
-    public String remove(int index) {
-
-        System.out.println("삭제할 index = " + index);
-        System.out.println("현재 size = " + size);
-
-        String removeData = data[index];
-
-        if (index == 0) {
-            //맨 앞을 삭제하고, 그 뒤의걸 전부 앞으로 당겨와야 함.
-
-            size--;
-            return removeData;
-        } else if (index == size - 1) {
-            //맨 뒤의 것을 삭제하고, 그자리만 비워주면 된다.
-
-            data[index] = null;
-
-            size--;
-            return removeData;
-        } else {
-            //삭제한 곳을 비워주고, 삭제한 곳 뒤의 내용을 당겨와야 한다.
-
-            for (int i = index; i < size - 1; i++) {
-                data[index] = data[index + 1];
-            }
-
-            data[index] = null;
-
-            size--;
-            return removeData;
-        }
-    }
+//    public String remove(int index) {
+//
+//        System.out.println("삭제할 index = " + index);
+//        System.out.println("현재 size = " + size);
+//
+//        String removeData = data[index];
+//
+//        if (index == 0) {
+//            //맨 앞을 삭제하고, 그 뒤의걸 전부 앞으로 당겨와야 함.
+//
+//            size--;
+//            return removeData;
+//        } else if (index == size - 1) {
+//            //맨 뒤의 것을 삭제하고, 그자리만 비워주면 된다.
+//
+//            data[index] = null;
+//
+//            size--;
+//            return removeData;
+//        } else {
+//            //삭제한 곳을 비워주고, 삭제한 곳 뒤의 내용을 당겨와야 한다.
+//
+//            for (int i = index; i < size - 1; i++) {
+//                data[index] = data[index + 1];
+//            }
+//
+//            data[index] = null;
+//
+//            size--;
+//            return removeData;
+//        }
+//    }
 
 }
