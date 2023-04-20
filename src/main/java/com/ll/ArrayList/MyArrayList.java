@@ -15,6 +15,9 @@ public class MyArrayList<T> {
     }
 
     public MyArrayList(int dataLength) {
+
+        // 단, 제너릭 배열은 생성할 수 없음.
+        // 이유 ->
         data = new Object[dataLength];
     }
 
@@ -23,14 +26,14 @@ public class MyArrayList<T> {
         return size;
     }
 
-    public boolean add(Object element) {
+    public boolean add(T element) {
 
         size++;
 
         //만약에 공간이 부족하다면 새 data 객체를 만든다.
         makeNewDataIfNotEnough();
 
-        data[size - 1] = (String) element;
+        data[size - 1] = element;
 
         return true;
     }
@@ -46,7 +49,7 @@ public class MyArrayList<T> {
 
         //1이 늘어난 size 를 기반으로 새로운 저장소를 만듦 -> 동적임은 맞지만 호출 횟수가 과하게 많음.
         //String[] newData = new String[size];
-        Object[] newData = new String[data.length * 2];
+        Object[] newData = new Object[data.length * 2];
 
         //덮어쓰기 (새 창고로 옮기기)
         for (int i = 0; i < data.length; i++) {
@@ -68,12 +71,11 @@ public class MyArrayList<T> {
     }
 
 
-    public Object get(int index) {
-
-        return data[index];
+    public T get(int index) {
+        return (T) data[index];
     }
 
-    public int indexOf(Object element) {
+    public int indexOf(T element) {
 
         for(int i=0; i<data.length; i++)
         {
@@ -91,9 +93,6 @@ public class MyArrayList<T> {
 //                .orElse(-1);
 
         return -1;
-
-
-
     }
 
 

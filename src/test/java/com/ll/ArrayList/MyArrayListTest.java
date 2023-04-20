@@ -126,6 +126,29 @@ class MyArrayListTest {
         assertThat(list.size()).isEqualTo(2);
     }
 
+    @Test
+    @DisplayName("Test_Add, get Boolean")
+    void t010() {
+
+        MyArrayList<Boolean> list = new MyArrayList<>();
+
+        list.add(true);
+        list.add(false);
+
+        boolean e0 = list.get(0);
+        boolean e1 = list.get(1);
+
+//        boolean e0 = (boolean) list.get(0);
+//        boolean e1 = (boolean) list.get(1);
+
+        assertThat(e0).isEqualTo(true);
+        assertThat(e1).isEqualTo(false);
+    }
+
+
+
+
+
 //    @Test
 //    @DisplayName("Test_Remove")
 //    void t008() {
